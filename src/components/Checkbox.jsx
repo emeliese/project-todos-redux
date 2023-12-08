@@ -1,19 +1,22 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-export const Checkbox = ({ label }) => {
-  const check = () => {
-    console.log("check");
+export const Checkbox = ({ task }) => {
+  //   const dispatch = useDispatch();
+  const addTask = () => {
+    console.log("check in checkbox");
   };
   return (
     <div>
       <label>
         <input
           type="checkbox"
-          id={label}
-          name={label}
-          onClick={() => check()}
+          id={task.id}
+          name={task.label}
+          defaultChecked={task.complete}
+          onClick={() => addTask()}
         ></input>
-        {label}
+        {task.content} id:{task.id}
       </label>
     </div>
   );

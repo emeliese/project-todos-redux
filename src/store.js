@@ -5,6 +5,7 @@ const reducer = combineReducers({
   tasklist: tasklistSlice,
   //add reducers here
 });
+
 export const store = configureStore({
   reducer: reducer,
 });
