@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { tasklist } from "../reducers/tasklist/tasklistSlice";
 import { CompleteCount } from "./CompleteCount";
+import "./ListPage.css";
 
 export const ListPage = () => {
   const tempToDo = ["task", "the thing", "next thing", "one more thing"];
@@ -28,7 +29,7 @@ const [completed, setCompleted] = useState(completedTasks.length);
     // dispatch
   };
   return (
-    <div>
+    <div className="list-page-container">
       <h1>ListPage</h1>
       <div>To do:</div>
       <div>
