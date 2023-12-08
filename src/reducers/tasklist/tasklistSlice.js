@@ -11,16 +11,23 @@ export const tasklist = createSlice({
   name: "tasklist",
   initialState,
   reducers: {
-    completeTask: () => {
-      state.complete = true;
+
+    toggleCheck: (state, action) => {
+      const {id} = action.payload;
+      let checked = state.list.find((el) => el.id === id);
+      console.log("content", checked.content, "id", checked.id);
+      checked.complete = !checked.complete
     },
-    openTask: () => {
-      state.complete = false;
-    },
+
     addTask: (state, action) => {
       const { id, content } = action.payload;
-      state.list.push({ id, content, complete: false });
+      state.list.push({ id, complete: false, content });
     },
+
+    removeTask: (state, action) => {
+      const {id} = action.payload;
+      state.list = state.list.filter((el) => el.id !== id);
+    }
   },
 });
 
