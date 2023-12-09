@@ -1,41 +1,34 @@
 import React from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { tasklist } from "../reducers/tasklist/tasklistSlice";
 
-
 export const Checkbox = ({ task }) => {
   const dispatch = useDispatch();
-  const [checked, setChecked] = useState(task.complete);
 
   const check = () => {
-    console.log("task.complete", task.complete, "task.id", task.id);
-    // setChecked(!checked)
-    dispatch(tasklist.actions.toggleCheck({id: task.id}));
-    // console.log("checkbox", task.complete);
-    console.log("task.complete", task.complete);
-    // console.log("task.id", task.id, "checked", checked);
-
+    dispatch(tasklist.actions.toggleCheck({ id: task.id }));
   };
 
   const removeTask = () => {
-    dispatch(tasklist.actions.removeTask({id: task.id}))
-    console.log("Hello")
-  }
+    dispatch(tasklist.actions.removeTask({ id: task.id }));
+  };
   return (
     <div>
       <label>
-        <input
-          type="checkbox"
-          id={task.id}
-          name={task.label}
-          defaultChecked={task.complete}
-          onClick={() => check()}
-        ></input>
-        {task.content} id:{task.id}
-      </label><button onClick={() => removeTask()}>Remove task</button>
+        <div>
+          <input
+            type="checkbox"
+            id={task.id}
+            name={task.label}
+            defaultChecked={task.complete}
+            onClick={() => check()}
+          ></input>
+          {task.content}
+          <button className="remove-task" onClick={() => removeTask()}>
+            ❌
+          </button>
+        </div>
+      </label>
     </div>
   );
 };
-
-//   <li>{label}</li>;
